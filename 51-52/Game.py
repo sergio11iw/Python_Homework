@@ -23,13 +23,18 @@ class Game:
         print(f'{player2.name} выбросил {self.sum2}')
         if self.sum1 > self.sum2:
             print(f'Победил {player1.name}\n')
+            self.player1.win += 1
         elif self.sum1 < self.sum2:
-             print(f'Победил {player2.name}\n')
+            print(f'Победил {player2.name}\n')
+            self.player2.win += 1
         else:
             print('Ничья')
-
+    def statis(self):
+        print(f'{player1.name} Побед {player1.win}')
+        print(f'{player2.name} Побед {player2.win}')
 player1 = Player("Alice")
 player2 = Player("Bob")
 game = Game(player1, player2)
 game.play_round()
-
+game.play_round()
+game.statis()
