@@ -17,8 +17,8 @@ class Game:
         self.sum1 = 0
         self.sum2 = 0
         for i in range(2):
-            self.sum1 += game.radoms()
-            self.sum2 += game.radoms()
+            self.sum1 += self.radoms()
+            self.sum2 += self.radoms()
         print(f'{player1.name} выбросил {self.sum1}')
         print(f'{player2.name} выбросил {self.sum2}')
         if self.sum1 > self.sum2:
