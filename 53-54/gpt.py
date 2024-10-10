@@ -58,8 +58,8 @@ class YandexGPT:
         text = response.json()['result']['alternatives'][0]['message']['text']
         return text
 
-token = 'AQVN02DysF8im3YO2KQT4qrbr4IRwaoCVVgAYwqe'
-catalog = 'b1gtphdg2vndncqf33o7'
+token = '_'
+catalog = '_'
 
 bot = YandexGPT(token, catalog)
 window = NoteWindows(bot)
