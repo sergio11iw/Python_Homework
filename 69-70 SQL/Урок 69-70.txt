@@ -1,0 +1,39 @@
+select customer.id, fio, name from customer left join purchase
+on customer.id = purchase.customer_id
+left join product
+on product.id = purchase.product_id
+where customer.id = 3
+ORDER BY name;
+
+select name from product;
+
+-- нет цены в таблицах--
+select customer.id, fio, name from customer left join purchase
+on customer.id = purchase.customer_id
+left join product
+on product.id = purchase.product_id;
+
+select fio, name from customer left join purchase
+on customer.id = purchase.customer_id
+left join product
+on product.id = purchase.product_id
+where name = 'Ноутбук'
+ORDER BY name;
+
+select name, count(name) from customer left join purchase
+on customer.id = purchase.customer_id
+left join product
+on product.id = purchase.product_id
+group by name;
+
+SELECT DISTINCT name from customer left join purchase
+on customer.id = purchase.customer_id
+left join product
+on product.id = purchase.product_id;
+
+select fio, count(fio) from customer left join purchase
+on customer.id = purchase.customer_id
+left join product
+on product.id = purchase.product_id
+group by fio
+HAVING COUNT(fio) > 2;
