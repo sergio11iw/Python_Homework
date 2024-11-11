@@ -1,0 +1,68 @@
+--Задание 16
+SELECT passenger.name, COUNT(*) as count from passenger
+JOIN Pass_in_trip on passenger.id = Pass_in_trip.passenger
+GROUP by passenger
+HAVING COUNT(trip) > 0
+ORDER by COUNT(trip) DESC, name
+--Задание 17
+SELECT member_name, status, SUM(amount*unit_price) as costs
+FROM FamilyMembers
+JOIN Payments on FamilyMembers.member_id = Payments.family_member
+WHERE YEAR(date) = 2005
+GROUP by member_name, status
+--Задание 18
+SELECT member_name
+FROM FamilyMembers
+WHERE birthday = 
+(SELECT MIN(birthday) FROM FamilyMembers)
+--Задание 19
+SELECT DISTINCT status
+FROM FamilyMembers
+JOIN Payments ON FamilyMembers.member_id=Payments.family_member
+JOIN Goods on Payments.good=Goods.good_id
+WHERE good_name = 'potato'
+--Задание 20
+SELECT FamilyMembers.status, FamilyMembers.member_name,
+SUM(Payments.amount*Payments.unit_price) as costs
+FROM FamilyMembers
+JOIN Payments on FamilyMembers.member_id=Payments.family_member
+JOIN Goods on Payments.good = Goods.good_id
+JOIN GoodTypes on Goods.type = GoodTypes.good_type_id
+WHERE  good_type_name = 'entertainment'
+GROUP BY FamilyMembers.status, FamilyMembers.member_name
+--Задание 21
+SELECT good_name
+FROM Goods
+JOIN Payments on Goods.good_id = Payments.good
+GROUP by good
+HAVING COUNT(good) > 1
+--Задание 22
+SELECT member_name
+FROM FamilyMembers
+WHERE status = 'mother'
+--Задание 23
+SELECT Goods.good_name,
+Payments.unit_price
+FROM Goods
+JOIN Payments on Goods.good_id = Payments.good
+JOIN GoodTypes on Goods.type = GoodTypes.good_type_id
+WHERE Payments.unit_price = (
+SELECT MAX(Payments.unit_price)
+FROM Payments
+JOIN Goods on Goods.good_id = Payments.good
+JOIN GoodTypes on Goods.type = GoodTypes.good_type_id
+WHERE GoodTypes.good_type_name = 'delicacies')
+--Задание 24
+SELECT member_name, SUM(amount*unit_price) as costs
+FROM FamilyMembers
+JOIN Payments on FamilyMembers.member_id = Payments.family_member
+WHERE  MONTH(date) = 06 AND YEAR(date) = 2005
+GROUP BY member_name
+--Задание 25
+SELECT good_name
+FROM Goods
+WHERE good_id not in
+(SELECT good FROM Payments WHERE YEAR(date) = 2005)
+
+
+
