@@ -1,0 +1,25 @@
+create view fio_shop as
+select fio, count(customer_id)
+from customer left join purchase
+on customer.id = purchase.customer_id
+group by fio;
+
+select * from fio_shop;
+
+create view fio_product as
+select fio, product.name
+from customer join purchase
+on customer.id = purchase.customer_id
+join product
+on product.id = purchase.product_id
+group by fio, product.name;
+
+select * from fio_product;
+
+
+create trigger fio_chandge
+after update of fio on customer
+begin
+ insert into fio_log (fio_id, old_fio, new_fio, datetime)
+ values (new.id, old.fio, new.fio, datetime());
+end;
