@@ -5,20 +5,21 @@ def get_tasks():
     cursor = connection.cursor()
     cursor.execute('select * from note')
     rows = cursor.fetchall()
-    cursor.close()
+    connection.close()
     return rows
 def add_task(name, raiting):
     connection = sq.connect('notes')
     cursor = connection.cursor()
     cursor.execute('''insert into note (name, raiting) values (?, ?);''', (name, raiting))
     connection.commit()
-    cursor.close()
+    connection.close()
 def top_tasks():
     connection = sq.connect('notes')
     cursor = connection.cursor()
     cursor.execute('select * from note WHERE raiting > 3')
     rows = cursor.fetchall()
-    cursor.close()
+    connection.commit()
+    connection.close()
     return rows
 while True:
     print('\nЗаметки')
