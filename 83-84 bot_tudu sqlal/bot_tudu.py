@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from sqlalchemy import create_engine, text
 db_name = 'bot_tudu'
-token = '7474657107:AAE-AdnvCFdDDUABNjmG1psf6VbQAcRGa-U'
+token = ''
 bot = telebot.TeleBot(token)
 db_name = 'bot_tudu'
 ADD_STATE = 'add'
