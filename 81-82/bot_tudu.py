@@ -3,7 +3,7 @@ from telebot import types
 import json
 import sqlite3 as sq
 
-token = '7474657107:AAE-AdnvCFdDDUABNjmG1psf6VbQAcRGa-U'
+token = ''
 bot = telebot.TeleBot(token)
 db_name = 'bot_tudu'
 ADD_STATE = 'add'
