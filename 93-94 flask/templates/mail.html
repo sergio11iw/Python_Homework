@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страницикус</title>
+</head>
+<body>
+    <h1><mark>Страницикус</mark></h1>
+
+<h3>Список пользователей</h3>
+{% for user in users %}
+<p><a href="{{ url_for('user_tasks', user_id=user.id) }}"> пользователь {{ user.id }} </a></p>
+{% endfor %}
+
+<a href="{{ url_for('main2')}}">Второй</a>
+
+</body>
+</html>
